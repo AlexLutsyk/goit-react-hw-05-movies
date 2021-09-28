@@ -1,24 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Loader from "react-loader-spinner";
+
+import Container from "./components/Container/Container";
+import AppBar from "./components/AppBar/AppBar";
+// import HomePage from './components/views/HomePage/HomePage';
+// import MoviesPage from './components/views/MoviesPage/MoviesPage';
+// import MovieDetailsPage from './components/views/MovieDetailsPage/MovieDetailsPage';
+// import NotFound from './components/notFound/NotFound';
+
+import "./App.css";
+
+const HomePage = lazy(() =>
+  import(
+    "./components/views/HomePage/HomePage.jsx" /* webpackChunkName: 'HomePage' */
+  )
+);
+const MoviesPage = lazy(() =>
+  import(
+    "./components/views/MoviesPage/MoviesPage.jsx" /* webpackChunkName: 'MoviesPage' */
+  )
+);
+const MovieDetailsPage = lazy(() =>
+  import(
+    "./components/views/MovieDetailsPage/MovieDetailsPage.jsx" /* webpackChunkName: 'MovieDetailsPage'*/
+  )
+);
+const NotFound = lazy(() =>
+  import("./components/notFound/NotFound.jsx" /* webpackChunk 'NotFound' */)
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <AppBar />
+      <Suspense
+        fallback={
+          <Loader
+            type="Watch"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={3000}
+          />
+        }
+      >
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/movies" exact>
+            <MoviesPage />
+          </Route>
+          <Route path="/movies/:movieId">
+            <MovieDetailsPage />
+          </Route>
+          <Route path="/">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Suspense>
+    </Container>
   );
 }
 

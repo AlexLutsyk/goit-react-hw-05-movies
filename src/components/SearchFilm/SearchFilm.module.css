@@ -1,0 +1,23 @@
+.SearchFilmWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SearchFilmInput {
+  width: 300px;
+  height: 30px;
+  margin-right: 30px;
+}
+.btn {
+  width: 150px;
+  padding: 5px;
+  color: #fff;
+  text-shadow: 1px 0px 2px rgba(150, 150, 150, 1);
+  background-color: #1485c8;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 30px;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}

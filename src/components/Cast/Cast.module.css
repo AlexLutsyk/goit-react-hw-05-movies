@@ -1,0 +1,11 @@
+.profileImg {
+  max-width: 180px;
+}
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.castItems:not(:last-child) {
+  margin-right: 15px;
+  max-width: 180px;
+}
