@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "react-loader-spinner";
 
@@ -26,9 +26,9 @@ const MovieDetailsPage = lazy(() =>
     "./components/views/MovieDetailsPage/MovieDetailsPage.jsx" /* webpackChunkName: 'MovieDetailsPage'*/
   )
 );
-const NotFound = lazy(() =>
-  import("./components/notFound/NotFound.jsx" /* webpackChunk 'NotFound' */)
-);
+// const NotFound = lazy(() =>
+//   import("./components/notFound/NotFound.jsx" /* webpackChunk 'NotFound' */)
+// );
 
 function App() {
   return (
@@ -56,7 +56,7 @@ function App() {
             <MovieDetailsPage />
           </Route>
           <Route path="/">
-            <NotFound />
+            <Redirect to="/" />
           </Route>
         </Switch>
       </Suspense>

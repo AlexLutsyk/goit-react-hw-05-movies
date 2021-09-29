@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useRouteMatch, useLocation, useHistory } from "react-router-dom";
-import { fetchByKeyWord } from "../../API/API";
+import { fetchByKeyWord } from "../../../API/API";
 import SearchFilm from "../../SearchFilm/SearchFilm";
 
 import s from "./MoviesPage.module.css";
@@ -29,6 +29,7 @@ export default function MoviesPage() {
       history.push({ ...location, search: `query=${searchFilm}` });
       setMovies(response.results);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchFilm]);
 
   return (

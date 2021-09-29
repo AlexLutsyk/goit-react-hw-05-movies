@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { fetchTrendingMovies } from "../../API/API";
+import { fetchTrendingMovies } from "../../../API/API";
 
 import s from "./HomePage.module.css";
 
@@ -15,6 +15,7 @@ export default function HomePage() {
     fetchTrendingMovies(1).then((response) => {
       setMovies(response.results);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

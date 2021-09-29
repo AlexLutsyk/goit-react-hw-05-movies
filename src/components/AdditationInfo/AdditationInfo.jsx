@@ -1,4 +1,4 @@
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "react-loader-spinner";
 import s from "./AdditationInfo.module.css";
@@ -14,17 +14,36 @@ const Reviews = lazy(() =>
 );
 
 export default function AdditationInfo({ movieId, url, path }) {
+  const location = useLocation();
+
+  console.log(location);
   return (
     <div className={s.AdditationInfoWrapper}>
       <h2>Additaional information:</h2>
       <ul>
         <li>
-          <Link className={s.AdditationInfoLink} to={`${url}/cast`}>
+          <Link
+            to={{
+              pathname: `${url}/cast`,
+              state: {
+                from: location?.state?.from ?? "/",
+              },
+            }}
+            className={s.AdditationInfoLink}
+          >
             Cast
           </Link>
         </li>
         <li>
-          <Link className={s.AdditationInfoLink} to={`${url}/reviews`}>
+          <Link
+            className={s.AdditationInfoLink}
+            to={{
+              pathname: `${url}/reviews`,
+              state: {
+                from: location?.state?.from ?? "/",
+              },
+            }}
+          >
             Reviews
           </Link>
         </li>

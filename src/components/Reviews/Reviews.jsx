@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchMovieReviews } from "../API/API";
+import { fetchMovieReviews } from "../../API/API";
 
 import s from "./Reviews.module.css";
 
@@ -11,7 +11,8 @@ export default function Reviews({ movieId }) {
       if (response.results.length === 0) return;
       setReviews(response.results);
     });
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

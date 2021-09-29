@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, useHistory, useRouteMatch } from "react-router-dom";
-import { fetchMovieDetails } from "../../API/API";
+import {
+  useParams,
+  useHistory,
+  useRouteMatch,
+  useLocation,
+} from "react-router-dom";
+import { fetchMovieDetails } from "../../../API/API";
 import Card from "../../Card/Card";
 import AdditaionInfo from "../../AdditationInfo/AdditationInfo";
 import s from "./MovieDetailsPage.module.css";
@@ -10,6 +15,7 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     fetchMovieDetails(movieId)
@@ -18,7 +24,7 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   const onGoBack = () => {
-    history.goBack();
+    history.push(location?.state?.from?.location ?? "/");
   };
 
   return (

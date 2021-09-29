@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchMovieCredits } from "../API/API";
+import { fetchMovieCredits } from "../../API/API";
 
 import s from "./Cast.module.css";
 

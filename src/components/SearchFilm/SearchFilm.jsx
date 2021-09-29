@@ -29,7 +29,7 @@ export default function SearchFilm({ onSubmit }) {
           onChange={onHandleChange}
           type="text"
         />
-        <button tupe="submit" className={s.btn}>
+        <button type="submit" className={s.btn}>
           Search Film
         </button>
       </form>
